@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<HTML lang=en>
+  <head>
+    <title>Library</title>
+    <meta charset="UTF-8">
+    <script src="js.js" defer></script>
+    <link rel="stylesheet" href="styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>
+  <body>
+    <div class="header">
+      <h1>Web Browser Library</h1>
+      <h5>Keep Your collection of books organized!</h5>
+    </div>
+    <div class="content">
+      <div class="sub-header-container">
+        <div class="overview-container sub-header-item">
+          <div id="overview-library-total" class="overview-item"></div>
+          <div id="overview-books-read" class="overview-item"></div>
+          <div id="overview-pages-read" class="overview-item"></div>
+        </div>
+        <button class="add-book-button sub-header-item">📖 Add Book 📖</button>
+      </div>
+      <div id="modal-container">
+        <div id="modal">
+          <h3 class="modal-header">Add book to library</h3>
+          <h6 id="populate-error-message" class="error-message hidden">**Please populate all fields and try again**</h6>
+          <form id="input-form">
+            <label for="form-title">Title:</label><br>
+            <input type="text" id="form-title" name="form-title"><br>
+            <label for="form-author">Author:</label><br>
+            <input type="text" id="form-author" name="form-author"><br>
+            <label for="form-pages">Pages:</label><br>
+            <input type="number" id="form-pages" name="form-pages"><br>
+            <h6 id="number-error-message" class="error-message hidden">**Please ensure pages input is a number**</h6>
+            <div class="read-checkbox-container">
+              <label for="form-read">I have read this book</label>
+              <input type="checkbox" id="form-read-checkbox" name="form-read"><br>
+            </div>
+          </form>
+          <button id="submit-book-button" class="form-button">submit Book</button>
+          <button id="close-modal-button" class="form-button">Close Form</button>
+        </div>
+      </div>
+      <div class="vertical-bar"></div>
+      <div class="book-card-container">
+      </div>
+    </div>
+    <div class="footer">
+      <h3 id="footer-text">Made with 🌭 by <a href="https://github.com/MattRossetti">Matt Rossetti</a></h3>
+    </div>
+  </body>
+</HTML>
