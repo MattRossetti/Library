@@ -159,7 +159,7 @@ h3 {
   border: solid 2px #5C6B73;
   margin: 25px;
   border-radius: 4px;
-  
+  box-shadow: 4px 4px 4px grey;
 }
 
 button {
@@ -181,6 +181,7 @@ button {
   width: 308px;
   height: 108px;
   transition: all .1s ease-in-out;
+  box-shadow: 4px 4px 4px grey;
 }
 
 .add-book-button:hover {
@@ -199,6 +200,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  box-shadow: 4px 4px 4px grey;
 }
 
 .overview-item {
