@@ -153,7 +153,7 @@ h3 {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-    width: 200px;
+  width: 200px;
   height: 200px;
   background-color: #9DB4C0;
   border: solid 2px #5C6B73;
@@ -173,6 +173,9 @@ button {
 }
 
 .add-book-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align:center;
   font-size: 36px;
   width: 308px;
