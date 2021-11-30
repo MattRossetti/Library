@@ -26,6 +26,7 @@
         <div id="modal">
           <h3 class="modal-header">Add book to library</h3>
           <h6 id="populate-error-message" class="error-message hidden">**Please populate all fields and try again**</h6>
+          <h6 id="duplicate-error-message" class="error-message hidden">**This book is already in your library**</h6>
           <form id="input-form">
             <label for="form-title">Title:</label><br>
             <input type="text" id="form-title" name="form-title"><br>
@@ -44,8 +45,7 @@
         </div>
       </div>
       <div class="vertical-bar"></div>
-      <div class="book-card-container">
-      </div>
+      <div class="book-card-container"></div>
     </div>
     <div class="footer">
       <h3 id="footer-text">Made with 🌭 by <a href="https://github.com/MattRossetti">Matt Rossetti</a></h3>

@@ -38,6 +38,10 @@ let toggleRead = (e) => {
   updateOverview();
 }
 
+let handleDuplicateError = () => {
+  duplicateErrorMessage.classList.remove('hidden');
+}
+
 let handlePopulateError = () => {
   populateErrorMessage.classList.remove('hidden');
 }
@@ -46,11 +50,9 @@ let handleNumberError = () => {
   numberErrorMessage.classList.remove('hidden');
 }
 
-let removeFromLibrary = (indexToRemove) => {
-  let newLibrary = [];
-  newLibrary = library.filter(book => book.index != indexToRemove);
-  library = newLibrary;
-}
+let removeFromLibrary = (indexToRemove => {
+  library.splice(indexToRemove, 1);
+})
 
 let sleep = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms))
@@ -66,12 +68,18 @@ let removeBook = (e) => {
   updateOverview();
 }
 
+let checkForDuplicate = (bookTitle) => {
+  duplicateBooks = library.filter((book) => book.title === bookTitle)
+  return (duplicateBooks.length > 0)
+}
+
+
 let createBookCard = (book) => {
   const bookCard = document.createElement('div');
   bookCard.classList.add('book-card')
-  bookCard.setAttribute('data-index', book.index);
   const bookTitle = document.createElement('div');
   bookTitle.textContent = `Title: ${book.title}`;
+  bookCard.setAttribute('data-index', book.index);
   const bookAuthor = document.createElement('div');
   bookAuthor.textContent = `Author: ${book.author}`;
   const bookPages = document.createElement('div');
@@ -94,14 +102,16 @@ let createBookCard = (book) => {
 let handleSubmitButton = () => {
   clearErrorMessages();
   const title = inputTitle.value;
+  isDuplicate = checkForDuplicate(inputTitle.value)
+  if(isDuplicate) return handleDuplicateError();
   const author = inputAuthor.value;
   const pages = inputPages.value;
   const read = readCheckbox.checked ? true : false;
   if (title === '' || author === '') return handlePopulateError()
   const isNum = /^\d+$/.test(pages)
   if (!isNum) return handleNumberError();
+  const index = library.length;
   const newBook = new Book(title, author, pages, read, index)
-  index += 1;
   library.push(newBook);
   modalContainer.classList.remove('show-modal');
   inputForm.reset();
@@ -110,6 +120,7 @@ let handleSubmitButton = () => {
 }
 
 let clearErrorMessages = () => {
+  duplicateErrorMessage.classList.add('hidden');
   populateErrorMessage.classList.add('hidden');
   numberErrorMessage.classList.add('hidden');
 }
@@ -121,7 +132,6 @@ let clearErrorMessages = () => {
 // library.forEach(e => console.log(e.info()))
 
 let library = [];
-let index = 0;
 const addBookButton = document.querySelector('.add-book-button');
 const modalContainer = document.getElementById('modal-container');
 const closeModalButton = document.getElementById('close-modal-button');
@@ -131,12 +141,14 @@ const inputAuthor = document.getElementById('form-author');
 const inputPages = document.getElementById('form-pages');
 const readCheckbox = document.getElementById('form-read-checkbox');
 const inputForm = document.getElementById('input-form');
+const duplicateErrorMessage = document.getElementById('duplicate-error-message');
 const populateErrorMessage = document.getElementById('populate-error-message');
 const numberErrorMessage = document.getElementById('number-error-message');
 const bookCardContainer = document.querySelector('.book-card-container');
 const overviewLibraryTotal = document.getElementById('overview-library-total');
 const overviewBooksRead = document.getElementById('overview-books-read');
 const overviewPagesRead = document.getElementById('overview-pages-read');
+
 
 addBookButton.addEventListener('click', () => modalContainer.classList.toggle('show'))
 closeModalButton.addEventListener('click', () => modalContainer.toggle)
