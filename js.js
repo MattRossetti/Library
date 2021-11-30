@@ -85,7 +85,7 @@ let createBookCard = (book) => {
   const bookPages = document.createElement('div');
   bookPages.textContent = `Pages: ${book.pages}`;
   const readButton = document.createElement('BUTTON');
-  readButton.textContent = 'Mark As unread';
+  readButton.textContent = 'Mark as read';
   readButton.classList.add('read-button');
   readButton.addEventListener('click', (e) => toggleRead(e.target));
   if (book.read) readButton.classList.add('read');
