@@ -1,19 +1,19 @@
-function Book(title, author, pages, read, index) {
-  // constructor
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.index = index;
+class Book {
+  constructor(title, author, pages, read, index){
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.index = index;
+  }
 
-  this.info = () => {
+  info() {
     const readText = read ? 'read' : 'not read yet'
     const info = `${title} by ${author}, ${pages} pages, ${readText}.`
     return info
   }
+  
 }
-
-// class Book(title, author, pages, read, index)
 
 let updateOverview = () => {
   const totalBooks = library.length;
