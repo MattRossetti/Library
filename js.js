@@ -13,6 +13,8 @@ function Book(title, author, pages, read, index) {
   }
 }
 
+// class Book(title, author, pages, read, index)
+
 let updateOverview = () => {
   const totalBooks = library.length;
   overviewLibraryTotal.textContent = `Books in library: ${totalBooks}`;
@@ -88,12 +90,15 @@ let createBookCard = (book) => {
   readButton.textContent = 'Mark as read';
   readButton.classList.add('read-button');
   readButton.addEventListener('click', (e) => toggleRead(e.target));
-  if (book.read) readButton.classList.add('read');
+  if (book.read){
+  readButton.classList.add('read');
+  readButton.textContent = 'Mark as unread';
+  }
+    
   const removeButton = document.createElement('button');
   removeButton.textContent = 'Remove'
   removeButton.classList.add('remove-button')
   removeButton.addEventListener('click', (e) => removeBook(e.target));
-  // removeButton.addEventListnener('click', (e) => removeCard(e));
   bookCard.append(bookTitle, bookAuthor, bookPages, readButton, removeButton);
   bookCardContainer.appendChild(bookCard)
 }
